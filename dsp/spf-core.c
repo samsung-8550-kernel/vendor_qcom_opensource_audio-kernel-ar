@@ -23,6 +23,9 @@
 #include <ipc/gpr-lite.h>
 #include <dsp/spf-core.h>
 #include <dsp/digital-cdc-rsc-mgr.h>
+#if IS_ENABLED(CONFIG_SND_SOC_SAMSUNG_AUDIO)
+#include <sound/samsung/snd_debug_proc.h>
+#endif
 
 #define Q6_READY_TIMEOUT_MS 1000
 #define Q6_CLOSE_ALL_TIMEOUT_MS 5000
@@ -265,7 +268,10 @@ void spf_core_apm_close_all(void)
 	} else {
 		dev_err_ratelimited(spf_core_priv->dev, "%s: command timedout, ret\n",
 			__func__);
-        }
+#ifdef CONFIG_SEC_SND_DEBUG
+		BUG();
+#endif /* CONFIG_SEC_SND_DEBUG */
+	}
 
 done:
 	core->resp_received = false;
@@ -345,6 +351,7 @@ static void spf_core_add_child_devices(struct work_struct *work)
 	} else {
 		dev_err(spf_core_priv->dev, "%s: apm is not up\n",
 			__func__);
+		sdp_boot_print("%s: apm is not up\n", __func__);
 		return;
 	}
 
