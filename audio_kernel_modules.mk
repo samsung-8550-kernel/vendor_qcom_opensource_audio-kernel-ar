@@ -58,7 +58,9 @@ AUDIO_KERNEL_MODULES += $(KERNEL_MODULES_OUT)/bolero_cdc_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/wcd937x_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/wcd937x_slave_dlkm.ko
 endif
-ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),b5q e5q))
+ifeq (y, $(filter y,\
+	$(CONFIG_MACH_SAMSUNG_B5Q) \
+	$(CONFIG_MACH_SAMSUNG_E5Q)))
 AUDIO_KERNEL_MODULES += $(KERNEL_MODULES_OUT)/tfa9878_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/tfa9878_sysfs_dlkm.ko
 endif

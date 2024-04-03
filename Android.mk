@@ -457,7 +457,9 @@ LOCAL_MODULE_DEBUG_ENABLE := true
 LOCAL_MODULE_PATH         := $(KERNEL_MODULES_OUT)
 include $(DLKM_DIR)/Build_external_kernelmodule.mk
 endif
-ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),b5q e5q))
+ifeq (y, $(filter y,\
+	$(CONFIG_SEC_PLATFORM_B5Q) \
+	$(CONFIG_SEC_PLATFORM_E5Q)))
 ###########################################################
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(AUDIO_SRC_FILES)

@@ -45,7 +45,9 @@ PRODUCT_PACKAGES += $(KERNEL_MODULES_OUT)/bolero_cdc_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/wcd938x_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/wcd938x_slave_dlkm.ko
 endif
-ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),b5q e5q))
+ifeq (y, $(filter y,\
+	$(CONFIG_SEC_PLATFORM_B5Q) \
+	$(CONFIG_SEC_PLATFORM_E5Q)))
 PRODUCT_PACKAGES += $(KERNEL_MODULES_OUT)/tfa9878_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/tfa9878_sysfs_dlkm.ko
 endif

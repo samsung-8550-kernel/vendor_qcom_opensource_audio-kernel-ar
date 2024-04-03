@@ -1,8 +1,9 @@
 
 # Swap configs for samsung board
-$(info "Targe project name is $(PROJECT_NAME)")
-
-ifeq ($(PROJECT_NAME), $(filter $(PROJECT_NAME),dm1q dm2q dm3q))
+ifeq (y, $(filter y,\
+	$(CONFIG_SEC_PLATFORM_DM1Q) \
+	$(CONFIG_SEC_PLATFORM_DM2Q) \
+	$(CONFIG_SEC_PLATFORM_DM3Q)))
     $(info "overwrite kalama as kalama_diamond config")
     $(shell rm -fr $(AUDIO_ROOT)/config/kalamaauto.conf)
     $(shell cp $(AUDIO_ROOT)/config/kalama_diamond.conf $(AUDIO_ROOT)/config/kalamaauto.conf)
@@ -10,7 +11,9 @@ ifeq ($(PROJECT_NAME), $(filter $(PROJECT_NAME),dm1q dm2q dm3q))
     $(shell cp $(AUDIO_ROOT)/config/kalamaautoconf_diamond.h $(AUDIO_ROOT)/config/kalamaautoconf.h)
 endif
 
-ifeq ($(PROJECT_NAME), $(filter $(PROJECT_NAME),q5q v5q))
+ifeq (y, $(filter y,\
+	$(CONFIG_SEC_PLATFORM_Q5Q) \
+	$(CONFIG_SEC_PLATFORM_V5Q)))
     $(info "overwrite kalama as kalama_q5 config")
     $(shell rm -fr $(AUDIO_ROOT)/config/kalamaauto.conf)
     $(shell cp $(AUDIO_ROOT)/config/kalama_q5.conf $(AUDIO_ROOT)/config/kalamaauto.conf)
@@ -18,7 +21,9 @@ ifeq ($(PROJECT_NAME), $(filter $(PROJECT_NAME),q5q v5q))
     $(shell cp $(AUDIO_ROOT)/config/kalamaautoconf_q5.h $(AUDIO_ROOT)/config/kalamaautoconf.h)
 endif
 
-ifeq ($(PROJECT_NAME), $(filter $(PROJECT_NAME),b5q e5q))
+ifeq (y, $(filter y,\
+	$(CONFIG_SEC_PLATFORM_B5Q) \
+	$(CONFIG_SEC_PLATFORM_E5Q)))
     $(info "overwrite kalama as kalama_b5 config")
     $(shell rm -fr $(AUDIO_ROOT)/config/kalamaauto.conf)
     $(shell cp $(AUDIO_ROOT)/config/kalama_b5.conf $(AUDIO_ROOT)/config/kalamaauto.conf)
@@ -26,7 +31,13 @@ ifeq ($(PROJECT_NAME), $(filter $(PROJECT_NAME),b5q e5q))
     $(shell cp $(AUDIO_ROOT)/config/kalamaautoconf_b5.h $(AUDIO_ROOT)/config/kalamaautoconf.h)
 endif
 
-ifeq ($(PROJECT_NAME), $(filter $(PROJECT_NAME),gts9 gts9p gts9u gts9wifi gts9pwifi gts9uwifi))
+ifeq (y, $(filter y,\
+	$(CONFIG_SEC_PLATFORM_GTS9) \
+	$(CONFIG_SEC_PLATFORM_GTS9P) \
+	$(CONFIG_SEC_PLATFORM_GTS9U) \
+	$(CONFIG_SEC_PLATFORM_GTS9WIFI) \
+	$(CONFIG_SEC_PLATFORM_GTS9PWIFI) \
+	$(CONFIG_SEC_PLATFORM_GTS9UWIFI)))
     $(info "overwrite kalama as kalama_gts9 config")
     $(shell rm -fr $(AUDIO_ROOT)/config/kalamaauto.conf)
     $(shell cp $(AUDIO_ROOT)/config/kalama_gts9.conf $(AUDIO_ROOT)/config/kalamaauto.conf)
